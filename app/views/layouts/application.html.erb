@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Amsterdam.rb</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header id="header">
+      <div class="wrap">
+        <h1 id="logo"><a href="/"><img src="<%= asset_path 'logo.png' %>" alt="Amsterdam.rb" /></a></h1>
+        <p id="intro">We aim at promoting all the aspects of the Ruby programming language and at fostering a vivid Ruby community in the Amsterdam region.</p>
+        <ul id="socnet">
+          <li><a class="twitter" href="http://twitter.com/amsrb">twitter</a></li>
+          <li><a class="github" href="https://github.com/amsrb">github</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div id="main">
+
+        <%= yield %>
+
+      </div>
+    </div>
+
+    <footer id="footer" class="wrap">
+      <p>Contact us: <a href="mailto:contact@amsrb.org">contact@amsrb.org</a>.</p>
+    </footer>
+
+<% if Rails.env.production? %>
+    <%= javascript_include_tag 'lib/jquery-1.9.1' %>
+<% else %>
+    <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>
+    <script>window.jQuery || document.write('<script src="/assets/jquery-1.9.1.min.js" type="text/javascript"><\/script>')</script>
+<% end %>
+<%= javascript_include_tag 'application' %>
+</body>
+</html>
